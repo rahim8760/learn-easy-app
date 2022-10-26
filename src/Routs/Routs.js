@@ -19,7 +19,13 @@ export const routes=createBrowserRouter([
             },
             {
                 path:'/home',
+                loader:async()=>{
+                  return fetch('https://learn-easy-server.vercel.app/courses');
+                },
                 element:<Home></Home>
+            
+                
+                
             },
             {
                 path:'/courses',
