@@ -1,6 +1,4 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 const ContactUs = () => {
     return (
         <div>
@@ -13,10 +11,10 @@ const ContactUs = () => {
                     <input id="name" type="text" placeholder="Name" className="input input-bordered w-full" />
                 </div>
                 <div className="form-control w-full">
-                    <label for="eamil" className="label">
+                    <label for="e" className="label">
                         <span className="label-text">Your Email</span>
                     </label>
-                    <input id="eamil" type="email" placeholder="Email" className="input input-bordered w-full" />
+                    <input id="e" type="email" placeholder="Email" className="input input-bordered w-full" />
                 </div>
                 <div className="form-control my-5 w-full">
                     <label for="password" className="label">

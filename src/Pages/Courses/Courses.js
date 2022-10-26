@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Carousel from '../../Sharepage/Carousel/Carousel';
 import Course from '../../Sharepage/Course/Course';
 
@@ -30,12 +31,12 @@ const Courses = () => {
             <div className="">
                 <h1 className='text-5xl mb-6'>More Courses</h1>
                 {
-                    allcourses.map(co=><p
-                        
+                    allcourses.map(co=><Link to={`/singlecourse/${co.id}`}>
+                        <p
                         className='text-1xl my-3'
-                        key={co.id}
-                        
-                    >{co.name}</p>)
+                        key={co.id}   
+                        >{co.name}</p>
+                    </Link>)
                 }
             </div>
             

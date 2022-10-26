@@ -6,6 +6,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import Blog from "../Pages/Blog/Blog";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Apply from "../Pages/Apply/Apply"
+import SingleCourse from "../Sharepage/SingleCourse/SingleCourse";
 
 
 export const routes=createBrowserRouter([
@@ -15,6 +16,9 @@ export const routes=createBrowserRouter([
         children:[
             {
                 path:'/',
+                loader:async()=>{
+                    return fetch('https://learn-easy-server.vercel.app/courses');
+                  },
                 element:<Home></Home>
             },
             {
@@ -22,14 +26,16 @@ export const routes=createBrowserRouter([
                 loader:async()=>{
                   return fetch('https://learn-easy-server.vercel.app/courses');
                 },
-                element:<Home></Home>
-            
-                
-                
+                element:<Home></Home>    
             },
             {
                 path:'/courses',
                 element:<Courses></Courses>
+            },
+            {
+                path:'/singlecourse/:id',
+                loader:({params})=>fetch(`http://localhost:5000/courses/${params.id}`),
+                element:<SingleCourse></SingleCourse>
             },
             {
                 path:'/blog',

@@ -22,7 +22,7 @@ const Carousel = () => {
               />
               <div className="absolute lg:bottom-8 md:bottom-3 bottom-0 lg:px-7 md:px-10 px-4 py-4">
                 <p className="lg:text-4xl md:text-2xl text-2xl font-semibold leading-9 text-white">
-                  Mother’s Day Special
+                  
                 </p>
                 <p className="text-base font-medium leading-none text-gray-800 bg-white px-2 py-2 max-w-[142px] mt-3 text-center">
                   50% discount !!!
