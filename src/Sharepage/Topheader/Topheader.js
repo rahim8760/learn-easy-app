@@ -2,10 +2,14 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { FaGoogle, FaFacebook, FaTwitter, FaGithub, FaInstagram } from "react-icons/fa";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Topheader = () => {
-    const {providerLogin}=useContext(AuthContext);
+    const {providerLogin, verifyEmail }=useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const googleProvider= new GoogleAuthProvider()
     const gitProvider = new GithubAuthProvider()
@@ -14,19 +18,22 @@ const Topheader = () => {
         providerLogin(gitProvider)
         .then(result=>{
             const user=result.user;
+            navigate(from, { replace: true });
             console.log(user);
+            
         })
         .catch(error=>console.error(error))
 
     }
     const handleGoogleSignIn=()=>{
         providerLogin(googleProvider)
-        .then(result=>{
-            const user=result.user;
-            console.log(user);
-        })
-        .catch(error=>console.error(error))
-
+            .then(result => {
+                const user = result.user;
+                verifyEmail();
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => console.error(error))
     }
     
     

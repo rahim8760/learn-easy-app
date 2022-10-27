@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Apply = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const {LoginUser}=useContext(AuthContext)
+    
     const handleSubmit=(event)=>{
         event.preventDefault();
         const form = event.target;
@@ -11,11 +16,10 @@ const Apply = () => {
         LoginUser(email, password)
         .then(result=>{
             const user=result.user;
+            navigate(from, { replace: true });
             console.log(user);
             form.reset()
         })
-        .catch(error=>console.error(error))
-        
     }
     return (
         <form onSubmit={handleSubmit} className='w-3/6 mx-auto my-28 border-2 border-indigo-600 p-6 py-12 rounded-md bg-orange-100 shadow-2xl'>

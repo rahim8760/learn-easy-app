@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 const ContactUs = () => {
-    const {createUser}= useContext(AuthContext)
+    const {createUser, verifyEmail}= useContext(AuthContext)
 
     const handleSubmit=(event)=>{
         event.preventDefault();
