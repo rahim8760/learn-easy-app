@@ -9,6 +9,7 @@ const Blog = () => {
                 <div className="grid max-w-sm gap-5 m-auto w-100 mb-8 lg:grid-cols-4 sm:mx-auto lg:max-w-full">
                     <div className="px-10 py-20 border rounded lg:px-5 lg:py-10 xl:py-20">
                         
+                        
                         <a
                             href="/"
                             className="text-center text-2xl inline-block max-w-xs mx-auto md-5 font-extrabold leading-7"
