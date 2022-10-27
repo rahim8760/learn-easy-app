@@ -7,6 +7,7 @@ const CheckOut = () => {
     const{name, image_url,enroll, author,price,id, details}=singlecours;
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
+      
         content: () => componentRef.current,
     });
     return (
