@@ -4,10 +4,8 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
-
-
-
 const Header = () => {
+    
     const {user, logOut}=useContext(AuthContext)
     const HandleLogout=()=>{
         logOut()
