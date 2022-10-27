@@ -4,8 +4,6 @@ import { Link, useLoaderData } from 'react-router-dom';
 const SingleCourse = () => {
     const [singlecours]=useLoaderData([])
     const{name, image_url,enroll, author,price,id, details}=singlecours;
-
-    console.log(singlecours, name);
     return (
         <div className=''>
            <div className="card w-3/6 my-24 bg-base-100 shadow-xl mx-auto">
@@ -33,8 +31,8 @@ const SingleCourse = () => {
                     <div className="badge badge-outline bg-fuchsia-500 py-5 px-2">Student Enroll {enroll}</div>
                     </div>
                     <div className="card-actions justify-end">
-                    <Link to={`/singlecourse/${id}`}>
-                        <button className="btn btn-primary">Apply now</button>
+                    <Link to={`/checkout/${id}`}>
+                        <button className="btn btn-primary">Premium Access</button>
                     </Link>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ import Blog from "../Pages/Blog/Blog";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Apply from "../Pages/Apply/Apply"
 import SingleCourse from "../Sharepage/SingleCourse/SingleCourse";
+import FAQ from "../Pages/FAQ/FAQ";
 
 
 export const routes=createBrowserRouter([
@@ -34,7 +35,7 @@ export const routes=createBrowserRouter([
             },
             {
                 path:'/singlecourse/:id',
-                loader:({params})=>fetch(`http://localhost:5000/courses/${params.id}`),
+                loader:({params})=>fetch(`https://learn-easy-server.vercel.app/courses/${params.id}`),
                 element:<SingleCourse></SingleCourse>
             },
             {
@@ -52,6 +53,14 @@ export const routes=createBrowserRouter([
             {
                 path:'/apply',
                 element:<Apply></Apply>
+            },
+            {
+                path:'/faq',
+                element:<FAQ></FAQ>
+            },
+            {
+                path:'/faq',
+                element:<FAQ></FAQ>
             },
         ]
         

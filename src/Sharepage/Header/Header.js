@@ -5,7 +5,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const {user}=useContext(AuthContext)
+    const {user, logOut}=useContext(AuthContext)
+    const HandleLogout=()=>{
+        logOut()
+        .then()
+        .cath(error=>console.log(error))
+
+    }
     return (
                     
         <div className="navbar bg-base-100">
@@ -17,21 +23,28 @@ const Header = () => {
                     <li><Link to={'/home'}>Home</Link></li>
                     <li><Link to={'/courses'}>Courses</Link></li>
                     <li><Link to={'/blog'}>Blog</Link></li>
+                    <li><Link to={'/faq'}>FAQ</Link></li>
                     <li><Link to={'/aboutUs'}>About Us</Link></li>
-                    <li><Link to={'/contact'}>Contact Us</Link></li>
                     {
-                        !user.uid? 
+                        user?.uid? 
                         <>
-                            <li><Link to={'/apply'}>Apply Now</Link></li>
-                        </>:
+
                             <li><Link>{user?.displayName}</Link></li>
+                            <button onClick={HandleLogout}>Logout</button>
+                        </>:
+                        <>
+                            <li><Link to={'/contact'}>Register</Link></li>
+                            <li><Link to={'/apply'}>Login</Link></li>
+                        </>
 
                      }
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                        {!user.photoURL?
+                        {!user?.photoURL?
                             <FaUser></FaUser>:
-                            <img src={user.photoURL} /> 
+                            <>
+                            <img src={user?.photoURL} /> 
+                            </>
                         
                         }
                         </div>

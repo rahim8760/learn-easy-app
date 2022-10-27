@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Apply = () => {
+    const {LoginUser}=useContext(AuthContext)
+    const handleSubmit=(event)=>{
+        event.preventDefault();
+        const form = event.target;
+        const email =form.e.value;
+        const password =form.password.value;
+        LoginUser(email, password)
+        .then(result=>{
+            const user=result.user;
+            console.log(user);
+            form.reset()
+        })
+        .catch(error=>console.error(error))
+        
+    }
     return (
-        <form className='w-3/6 mx-auto my-28 border-2 border-indigo-600 p-6 py-12 rounded-md bg-orange-100 shadow-2xl'>
+        <form onSubmit={handleSubmit} className='w-3/6 mx-auto my-28 border-2 border-indigo-600 p-6 py-12 rounded-md bg-orange-100 shadow-2xl'>
             <div className="form-control w-full">
                 <label for="eamil" className="label">
                     <span className="label-text">Your Email</span>
                 </label>
-                <input id="eamil" type="text" placeholder="Email" className="input input-bordered w-full" />
+                <input id="eamil" name="e" type="text" placeholder="Email" className="input input-bordered w-full" />
             </div>
             <div className="form-control my-5 w-full">
                 <label for="password" className="label">
                     <span className="label-text">Your Password</span>
                 </label>
-                <input id="password" type="text" placeholder="password" className="input input-bordered w-full" />
+                <input id="password" name="password" type="text" placeholder="password" className="input input-bordered w-full" />
             </div>
             <div className="form-control">
                 <label className="label cursor-pointer">
